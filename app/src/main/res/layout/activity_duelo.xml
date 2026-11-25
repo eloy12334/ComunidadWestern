@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/page_bg" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="18dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="DUELO DEL OESTE" android:textColor="@color/primary"
+            android:textSize="28sp" android:textStyle="bold" android:gravity="center"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Un duelo de reflejos entre vecinos" android:textColor="@color/text_muted"
+            android:textSize="14sp" android:gravity="center" android:layout_marginBottom="12dp"/>
+        <com.example.comunidadwestern.WesternSceneView
+            android:layout_width="match_parent" android:layout_height="190dp"
+            android:background="@drawable/bg_western_panel"
+            android:contentDescription="Ilustración del desierto del oeste con vaqueros caricaturizados"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp" android:layout_marginTop="14dp"
+            android:background="@drawable/bg_western_panel">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="MODO DE JUEGO" android:textColor="@color/gold"
+                android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
+            <RadioGroup android:id="@+id/rgModo" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:gravity="center" android:layout_marginTop="8dp">
+                <RadioButton android:id="@+id/rbMejor1" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:checked="true"
+                    android:text="Mejor de 1" android:textColor="@color/on_primary"
+                    android:buttonTint="@color/gold"/>
+                <RadioButton android:id="@+id/rbMejor3" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Mejor de 3"
+                    android:textColor="@color/on_primary" android:buttonTint="@color/gold"/>
+                <RadioButton android:id="@+id/rbMejor5" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Mejor de 5"
+                    android:textColor="@color/on_primary" android:buttonTint="@color/gold"/>
+            </RadioGroup>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="La cuenta será aleatoria: entre 3 y 5 segundos por ronda."
+                android:textColor="@color/surface_alt" android:textSize="13sp" android:gravity="center"
+                android:layout_marginTop="5dp"/>
+            <Button android:id="@+id/btnCrearSala" android:layout_width="match_parent"
+                android:layout_height="54dp" android:layout_marginTop="14dp"
+                android:background="@drawable/bg_western_gold_button" android:text="CREAR SALA"
+                android:textColor="@color/primary" android:textStyle="bold" android:textAllCaps="false"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="¿Tu rival ya creó una sala?" android:textColor="@color/gold"
+                android:gravity="center" android:layout_marginTop="15dp"/>
+            <EditText android:id="@+id/txtCodigoSala" android:layout_width="match_parent"
+                android:layout_height="52dp" android:layout_marginTop="8dp"
+                android:background="@color/on_primary" android:hint="CÓDIGO DE 6 CARACTERES"
+                android:inputType="textCapCharacters" android:maxLength="6"
+                android:gravity="center" android:textColor="@color/primary"
+                android:textStyle="bold" android:letterSpacing="0.15"/>
+            <Button android:id="@+id/btnUnirseSala" android:layout_width="match_parent"
+                android:layout_height="52dp" android:layout_marginTop="8dp"
+                android:background="@drawable/bg_western_red_button" android:text="UNIRSE AL DUELO"
+                android:textColor="@color/on_primary" android:textStyle="bold" android:textAllCaps="false"/>
+        </LinearLayout>
+        <Button android:id="@+id/btnComoJugar" android:layout_width="match_parent"
+            android:layout_height="48dp" android:layout_marginTop="10dp"
+            android:backgroundTint="@color/secondary" android:text="CÓMO JUGAR"
+            android:textColor="@color/on_primary" android:textAllCaps="false"/>
+        <Button android:id="@+id/btnVolverDuelo" android:layout_width="match_parent"
+            android:layout_height="46dp" android:layout_marginTop="5dp"
+            android:backgroundTint="@color/primary" android:text="VOLVER"
+            android:textColor="@color/on_primary" android:textAllCaps="false"/>
+    </LinearLayout>
+</ScrollView>

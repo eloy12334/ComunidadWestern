@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    android:background="@color/duel_wood_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:layout_width="58dp"
+            android:layout_height="68dp"
+            android:src="@drawable/duel_estrella_sheriff"
+            android:scaleType="fitCenter"
+            android:contentDescription="Insignia del sheriff" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="CÓMO JUGAR"
+            android:textColor="@color/duel_parchment_light"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/duel_panel_reglas"
+            android:padding="16dp"
+            android:text="1. Crea una sala y comparte el código con otro vecino."
+            android:textColor="@color/duel_ink"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/duel_panel_reglas"
+            android:padding="16dp"
+            android:text="2. El anfitrión inicia la ronda. La cuenta será aleatoria, entre 3 y 5 segundos."
+            android:textColor="@color/duel_ink"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/duel_panel_reglas"
+            android:padding="16dp"
+            android:text="3. Puedes disparar durante la cuenta: si el servidor recibe el disparo antes de llegar a 0, es falsa salida y pierdes la ronda."
+            android:textColor="@color/duel_ink"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/duel_panel_reglas"
+            android:padding="16dp"
+            android:text="4. En mejor de 1, perder la ronda significa perder el duelo completo. En mejor de 3 o 5, pierdes solamente esa ronda."
+            android:textColor="@color/duel_ink"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/duel_panel_reglas"
+            android:padding="16dp"
+            android:text="5. Gana quien llegue primero a la cantidad de rondas necesaria."
+            android:textColor="@color/duel_ink"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>
