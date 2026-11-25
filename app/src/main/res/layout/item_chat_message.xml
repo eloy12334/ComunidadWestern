@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contenedorMensaje"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="112dp"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/chat_message_bubble_light"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNombreVivienda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chat_sender_tag"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="eloy · #311A"
+            android:textColor="#FFF1D4"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtTextoMensaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="serif"
+            android:text="Hola, esta es mi primera prueba en Comunidad Western."
+            android:textColor="#4A2816"
+            android:textSize="14sp"
+            android:lineSpacingExtra="1dp" />
+
+        <TextView
+            android:id="@+id/txtFechaMensaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="◷ 24/11 17:56"
+            android:textColor="#76502F"
+            android:textSize="10sp" />
+    </LinearLayout>
+</FrameLayout>

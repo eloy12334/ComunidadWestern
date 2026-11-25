@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="18dp">
+    <TextView style="@style/ScreenTitle" android:text="Ventas comunitarias"/>
+    <TextView style="@style/MutedText" android:text="Ofrece productos y encuentra oportunidades en tu comunidad." android:layout_marginBottom="12dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_panel" android:padding="14dp" android:elevation="2dp">
+        <TextView style="@style/SectionLabel" android:text="NUEVA PUBLICACIÓN"/>
+        <EditText android:id="@+id/txtProducto" style="@style/FormField" android:hint="Nombre del producto"/>
+        <EditText android:id="@+id/txtDescripcionProducto" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Descripción" android:inputType="textMultiLine" android:minLines="2" android:gravity="top|start"/>
+        <EditText android:id="@+id/txtPrecioProducto" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Precio (CLP)" android:inputType="numberDecimal"/>
+        <Button android:id="@+id/btnPublicarProducto" style="@style/PrimaryButton" android:text="Publicar producto"/>
+    </LinearLayout>
+    <TextView style="@style/SectionLabel" android:layout_marginTop="18dp" android:text="PUBLICACIONES RECIENTES · TOCA TU PRODUCTO PARA MARCARLO VENDIDO"/>
+    <ListView android:id="@+id/listaVentas" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="@drawable/bg_panel" android:divider="@color/divider" android:dividerHeight="1dp" android:padding="8dp"/>
+    <Button android:id="@+id/btnVolverVentas" style="@style/TextAction" android:text="Volver"/>
+</LinearLayout>
