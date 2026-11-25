@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@drawable/bg_page_background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:layout_width="54dp" android:layout_height="54dp" android:src="@drawable/western_brand" android:scaleType="fitCenter" android:contentDescription="Logo Comunidad Western"/>
+            <TextView style="@style/ScreenTitle" android:layout_marginStart="12dp" android:text="Mi perfil"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_panel" android:padding="18dp" android:layout_marginTop="20dp" android:elevation="2dp">
+            <TextView style="@style/SectionLabel" android:text="DATOS DE TU CUENTA"/>
+            <TextView style="@style/MutedText" android:layout_marginTop="8dp" android:text="Correo electrónico"/>
+            <TextView android:id="@+id/txtCorreoPerfil" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/text_main" android:textSize="15sp" android:paddingTop="4dp"/>
+            <TextView style="@style/MutedText" android:layout_marginTop="16dp" android:text="Nombre mostrado"/>
+            <EditText android:id="@+id/txtNombrePerfil" style="@style/FormField" android:hint="Nombre"/>
+            <TextView style="@style/MutedText" android:layout_marginTop="14dp" android:text="Vivienda"/>
+            <EditText android:id="@+id/txtViviendaPerfil" style="@style/FormField" android:hint="Ej. 311A"/>
+            <TextView style="@style/MutedText" android:layout_marginTop="14dp" android:text="Rol"/>
+            <TextView android:id="@+id/txtRolPerfil" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:background="@drawable/bg_chip" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="7dp" android:paddingBottom="7dp" android:text="Vecino" android:textColor="@color/primary" android:textStyle="bold" android:textSize="13sp"/>
+            <Button android:id="@+id/btnGuardarPerfil" style="@style/PrimaryButton" android:layout_marginTop="22dp" android:text="Guardar cambios"/>
+            <Button android:id="@+id/btnCerrarSesionPerfil" style="@style/SecondaryButton" android:text="Cerrar sesión"/>
+        </LinearLayout>
+        <Button android:id="@+id/btnVolverPerfil" style="@style/TextAction" android:text="Volver"/>
+    </LinearLayout>
+</ScrollView>
