@@ -1,0 +1,267 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "profiles": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('roles').child(auth.uid).val() === 'admin')",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['name','housing','email','createdAt'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60"
+        },
+        "housing": {
+          ".validate": "newData.isString() && newData.val().matches(/^[A-Za-z0-9-]{1,10}$/)"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().length <= 120"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    "roles": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
+    "messages": {
+      "$community": {
+        ".read": "auth != null",
+        "$id": {
+          ".write": "auth != null && !data.exists() && newData.child('uid').val() === auth.uid",
+          ".validate": "newData.hasChildren(['uid','name','housing','text','createdAt'])",
+          "uid": {
+            ".validate": "newData.val() === auth.uid"
+          },
+          "name": {
+            ".validate": "newData.isString() && newData.val().length <= 60"
+          },
+          "housing": {
+            ".validate": "newData.isString() && newData.val().length <= 10"
+          },
+          "text": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+    "sales": {
+      "$community": {
+        ".read": "auth != null",
+        "$id": {
+          ".write": "auth != null && ((!data.exists() && newData.child('sellerUid').val() === auth.uid && newData.child('status').val() === 'DISPONIBLE') || (data.child('sellerUid').val() === auth.uid && newData.child('sellerUid').val() === auth.uid && newData.child('status').val() === 'VENDIDO' && data.child('status').val() === 'DISPONIBLE') || root.child('roles').child(auth.uid).val() === 'admin')",
+          ".validate": "newData.hasChildren(['title','description','price','sellerUid','sellerName','housing','status','createdAt'])",
+          "title": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60"
+          },
+          "description": {
+            ".validate": "newData.isString() && newData.val().length <= 300"
+          },
+          "price": {
+            ".validate": "newData.isString() && newData.val().matches(/^[0-9]+([.,][0-9]{1,2})?$/)"
+          },
+          "sellerUid": {
+            ".validate": "newData.isString()"
+          },
+          "sellerName": {
+            ".validate": "newData.isString()"
+          },
+          "housing": {
+            ".validate": "newData.isString()"
+          },
+          "status": {
+            ".validate": "newData.val() === 'DISPONIBLE' || newData.val() === 'VENDIDO'"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+    "announcements": {
+      "$community": {
+        ".read": "auth != null",
+        "$id": {
+          ".write": "auth != null && root.child('roles').child(auth.uid).val() === 'admin'",
+          ".validate": "newData.hasChildren(['title','body','author','authorUid','createdAt'])",
+          "title": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+          },
+          "body": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 1000"
+          },
+          "author": {
+            ".validate": "newData.isString()"
+          },
+          "authorHousing": {
+            ".validate": "newData.isString()"
+          },
+          "authorUid": {
+            ".validate": "newData.val() === auth.uid"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+    "alerts": {
+      "$community": {
+        ".read": "auth != null",
+        "$id": {
+          ".write": "auth != null && ((!data.exists() && newData.child('uid').val() === auth.uid) || (data.child('uid').val() === auth.uid && data.child('status').val() === 'PENDIENTE' && newData.child('status').val() === 'ENVIADA' && newData.child('uid').val() === auth.uid) || root.child('roles').child(auth.uid).val() === 'admin')",
+          ".validate": "newData.hasChildren(['alertId','communityId','uid','name','housing','createdAt','status'])",
+          "alertId": {
+            ".validate": "newData.val() === $id"
+          },
+          "communityId": {
+            ".validate": "newData.val() === $community"
+          },
+          "uid": {
+            ".validate": "newData.isString()"
+          },
+          "name": {
+            ".validate": "newData.isString()"
+          },
+          "housing": {
+            ".validate": "newData.isString()"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "status": {
+            ".validate": "newData.val() === 'PENDIENTE' || newData.val() === 'ENVIADA' || newData.val() === 'ATENDIDA' || newData.val() === 'CERRADA'"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+    "alertReceipts": {
+      "$community": {
+        "$alertId": {
+          ".read": "auth != null && root.child('roles').child(auth.uid).val() === 'admin'",
+          "$uid": {
+            ".read": "auth != null && auth.uid === $uid",
+            ".write": "auth != null && auth.uid === $uid && !data.exists()",
+            ".validate": "newData.hasChildren(['uid','name','housing','seenAt'])",
+            "uid": {
+              ".validate": "newData.val() === auth.uid"
+            },
+            "name": {
+              ".validate": "newData.isString() && newData.val().length <= 60"
+            },
+            "housing": {
+              ".validate": "newData.isString() && newData.val().length <= 10"
+            },
+            "seenAt": {
+              ".validate": "newData.isNumber()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        }
+      }
+    },
+    "duels": {
+      "$code": {
+        ".read": "auth != null && (!data.exists() || data.child('phase').val() === 'WAITING' || data.child('players').child(auth.uid).exists())",
+        ".write": "auth != null && (( !data.exists() && newData.child('hostUid').val() === auth.uid && newData.child('guestUid').val() === '' && newData.child('phase').val() === 'WAITING' && newData.child('roundNumber').val() === 0 && newData.child('players').numChildren() === 1 && newData.child('players').child(auth.uid).exists() && newData.child('players').child(auth.uid).child('name').val() === root.child('profiles').child(auth.uid).child('name').val() && newData.child('players').child(auth.uid).child('housing').val() === root.child('profiles').child(auth.uid).child('housing').val() && newData.child('scores').child(auth.uid).val() === 0 && ((newData.child('bestOf').val() === 1 && newData.child('targetWins').val() === 1) || (newData.child('bestOf').val() === 3 && newData.child('targetWins').val() === 2) || (newData.child('bestOf').val() === 5 && newData.child('targetWins').val() === 3))) || (data.exists() && data.child('phase').val() === 'WAITING' && data.child('guestUid').val() === '' && data.child('hostUid').val() !== auth.uid && newData.child('guestUid').val() === auth.uid && newData.child('phase').val() === 'READY' && newData.child('players').numChildren() === 2 && newData.child('players').child(data.child('hostUid').val()).exists() && newData.child('players').child(auth.uid).exists() && newData.child('players').child(auth.uid).child('name').val() === root.child('profiles').child(auth.uid).child('name').val() && newData.child('players').child(auth.uid).child('housing').val() === root.child('profiles').child(auth.uid).child('housing').val() && newData.child('players').child(data.child('hostUid').val()).child('name').val() === data.child('players').child(data.child('hostUid').val()).child('name').val() && newData.child('players').child(data.child('hostUid').val()).child('housing').val() === data.child('players').child(data.child('hostUid').val()).child('housing').val() && newData.child('scores').child(auth.uid).val() === 0 && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('bestOf').val() === data.child('bestOf').val() && newData.child('targetWins').val() === data.child('targetWins').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('roundNumber').val() === data.child('roundNumber').val() && newData.child('dueAt').val() === data.child('dueAt').val() && newData.child('winnerUid').val() === data.child('winnerUid').val() && newData.child('scores').child(data.child('hostUid').val()).val() === data.child('scores').child(data.child('hostUid').val()).val()) || (data.exists() && auth.uid === data.child('hostUid').val() && (data.child('phase').val() === 'READY' || data.child('phase').val() === 'ROUND_RESULT') && newData.child('phase').val() === 'COUNTDOWN' && newData.child('roundNumber').val() === data.child('roundNumber').val() + 1 && newData.child('dueAt').val() >= now + 2500 && newData.child('dueAt').val() <= now + 5500 && newData.child('winnerUid').val() === '' && !newData.child('roundResult').exists() && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('guestUid').val() === data.child('guestUid').val() && newData.child('bestOf').val() === data.child('bestOf').val() && newData.child('targetWins').val() === data.child('targetWins').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('players').child(data.child('hostUid').val()).child('name').val() === data.child('players').child(data.child('hostUid').val()).child('name').val() && newData.child('players').child(data.child('hostUid').val()).child('housing').val() === data.child('players').child(data.child('hostUid').val()).child('housing').val() && newData.child('players').child(data.child('guestUid').val()).child('name').val() === data.child('players').child(data.child('guestUid').val()).child('name').val() && newData.child('players').child(data.child('guestUid').val()).child('housing').val() === data.child('players').child(data.child('guestUid').val()).child('housing').val() && newData.child('scores').child(data.child('hostUid').val()).val() === data.child('scores').child(data.child('hostUid').val()).val() && newData.child('scores').child(data.child('guestUid').val()).val() === data.child('scores').child(data.child('guestUid').val()).val()) || (data.exists() && data.child('phase').val() === 'COUNTDOWN' && (auth.uid === data.child('hostUid').val() || auth.uid === data.child('guestUid').val()) && (newData.child('phase').val() === 'ROUND_RESULT' || newData.child('phase').val() === 'MATCH_FINISHED') && newData.child('roundNumber').val() === data.child('roundNumber').val() && newData.child('dueAt').val() === data.child('dueAt').val() && newData.child('hostUid').val() === data.child('hostUid').val() && newData.child('guestUid').val() === data.child('guestUid').val() && newData.child('bestOf').val() === data.child('bestOf').val() && newData.child('targetWins').val() === data.child('targetWins').val() && newData.child('createdAt').val() === data.child('createdAt').val() && newData.child('players').child(data.child('hostUid').val()).child('name').val() === data.child('players').child(data.child('hostUid').val()).child('name').val() && newData.child('players').child(data.child('hostUid').val()).child('housing').val() === data.child('players').child(data.child('hostUid').val()).child('housing').val() && newData.child('players').child(data.child('guestUid').val()).child('name').val() === data.child('players').child(data.child('guestUid').val()).child('name').val() && newData.child('players').child(data.child('guestUid').val()).child('housing').val() === data.child('players').child(data.child('guestUid').val()).child('housing').val() && newData.child('roundResult').child('shooterUid').val() === auth.uid && newData.child('roundResult').child('roundNumber').val() === data.child('roundNumber').val() && newData.child('roundResult').child('winnerUid').val() === (now < data.child('dueAt').val() ? (auth.uid === data.child('hostUid').val() ? data.child('guestUid').val() : data.child('hostUid').val()) : auth.uid) && newData.child('roundResult').child('reason').val() === (now < data.child('dueAt').val() ? 'FALSE_START' : 'QUICK_DRAW') && newData.child('scores').child(data.child('hostUid').val()).val() === data.child('scores').child(data.child('hostUid').val()).val() + ((newData.child('roundResult').child('winnerUid').val() === data.child('hostUid').val()) ? 1 : 0) && newData.child('scores').child(data.child('guestUid').val()).val() === data.child('scores').child(data.child('guestUid').val()).val() + ((newData.child('roundResult').child('winnerUid').val() === data.child('guestUid').val()) ? 1 : 0) && ((newData.child('scores').child(newData.child('roundResult').child('winnerUid').val()).val() >= data.child('targetWins').val() && newData.child('phase').val() === 'MATCH_FINISHED' && newData.child('winnerUid').val() === newData.child('roundResult').child('winnerUid').val()) || (newData.child('scores').child(newData.child('roundResult').child('winnerUid').val()).val() < data.child('targetWins').val() && newData.child('phase').val() === 'ROUND_RESULT' && newData.child('winnerUid').val() === ''))))",
+        ".validate": "newData.hasChildren(['code','hostUid','guestUid','players','bestOf','targetWins','scores','phase','roundNumber','dueAt','winnerUid','createdAt']) && newData.child('code').val() === $code && newData.child('hostUid').isString() && newData.child('hostUid').val().length > 0 && newData.child('guestUid').isString() && (newData.child('bestOf').val() === 1 || newData.child('bestOf').val() === 3 || newData.child('bestOf').val() === 5) && ((newData.child('bestOf').val() === 1 && newData.child('targetWins').val() === 1) || (newData.child('bestOf').val() === 3 && newData.child('targetWins').val() === 2) || (newData.child('bestOf').val() === 5 && newData.child('targetWins').val() === 3)) && newData.child('players').numChildren() === (newData.child('guestUid').val() === '' ? 1 : 2) && newData.child('players').child(newData.child('hostUid').val()).exists() && (newData.child('guestUid').val() === '' || newData.child('players').child(newData.child('guestUid').val()).exists()) && newData.child('scores').numChildren() === (newData.child('guestUid').val() === '' ? 1 : 2) && newData.child('scores').child(newData.child('hostUid').val()).exists() && (newData.child('guestUid').val() === '' || newData.child('scores').child(newData.child('guestUid').val()).exists()) && newData.child('roundNumber').isNumber() && newData.child('roundNumber').val() >= 0 && newData.child('roundNumber').val() <= newData.child('bestOf').val() && newData.child('dueAt').isNumber() && newData.child('dueAt').val() >= 0 && newData.child('winnerUid').isString() && newData.child('createdAt').isNumber() && (newData.child('guestUid').val() === '' ? newData.child('phase').val() === 'WAITING' : (newData.child('phase').val() === 'READY' || newData.child('phase').val() === 'COUNTDOWN' || newData.child('phase').val() === 'ROUND_RESULT' || newData.child('phase').val() === 'MATCH_FINISHED')) && ((newData.child('phase').val() === 'ROUND_RESULT' || newData.child('phase').val() === 'MATCH_FINISHED') ? newData.child('roundResult').exists() : !newData.child('roundResult').exists()) && (newData.child('phase').val() === 'MATCH_FINISHED' ? (newData.child('winnerUid').val() === newData.child('hostUid').val() || newData.child('winnerUid').val() === newData.child('guestUid').val()) : newData.child('winnerUid').val() === '')",
+        "code": {
+          ".validate": "newData.isString() && newData.val().matches(/^[A-F0-9]{6}$/)"
+        },
+        "hostUid": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        },
+        "guestUid": {
+          ".validate": "newData.isString()"
+        },
+        "players": {
+          "$playerUid": {
+            ".validate": "newData.hasChildren(['name','housing'])",
+            "name": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 60"
+            },
+            "housing": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 10"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "bestOf": {
+          ".validate": "newData.isNumber() && (newData.val() === 1 || newData.val() === 3 || newData.val() === 5)"
+        },
+        "targetWins": {
+          ".validate": "newData.isNumber() && (newData.val() === 1 || newData.val() === 2 || newData.val() === 3)"
+        },
+        "scores": {
+          "$scoreUid": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3"
+          }
+        },
+        "phase": {
+          ".validate": "newData.isString() && (newData.val() === 'WAITING' || newData.val() === 'READY' || newData.val() === 'COUNTDOWN' || newData.val() === 'ROUND_RESULT' || newData.val() === 'MATCH_FINISHED')"
+        },
+        "roundNumber": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5"
+        },
+        "dueAt": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "winnerUid": {
+          ".validate": "newData.isString()"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "roundResult": {
+          ".validate": "newData.hasChildren(['winnerUid','shooterUid','reason','roundNumber','shotAt'])",
+          "winnerUid": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "shooterUid": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "reason": {
+            ".validate": "newData.val() === 'FALSE_START' || newData.val() === 'QUICK_DRAW'"
+          },
+          "roundNumber": {
+            ".validate": "newData.isNumber()"
+          },
+          "shotAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}
