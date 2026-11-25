@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="18dp">
+    <TextView style="@style/ScreenTitle" android:text="Anuncios oficiales"/>
+    <TextView style="@style/MutedText" android:text="Información importante para todos los residentes." android:layout_marginBottom="12dp"/>
+    <LinearLayout android:id="@+id/panelAdminAnuncio" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_panel" android:padding="14dp" android:elevation="2dp" android:visibility="gone">
+        <TextView style="@style/SectionLabel" android:text="PUBLICAR COMO ADMINISTRADOR"/>
+        <EditText android:id="@+id/txtTituloAnuncio" style="@style/FormField" android:hint="Título del anuncio"/>
+        <EditText android:id="@+id/txtCuerpoAnuncio" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Contenido" android:minLines="3" android:gravity="top|start" android:inputType="textMultiLine"/>
+        <Button android:id="@+id/btnPublicarAnuncio" style="@style/PrimaryButton" android:text="Publicar anuncio"/>
+    </LinearLayout>
+    <ListView android:id="@+id/listaAnuncios" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:divider="@color/divider" android:dividerHeight="1dp" android:paddingTop="10dp" android:clipToPadding="false"/>
+    <Button android:id="@+id/btnVolverAnuncios" style="@style/TextAction" android:text="Volver"/>
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="132dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Cartel de anuncio comunitario"
+        android:scaleType="fitXY"
+        android:src="@drawable/ann_notice_board" />
+
+    <ImageView
+        android:id="@+id/imgIconoAnuncio"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="14dp"
+        android:contentDescription="Icono del anuncio"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ann_megaphone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="17dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtAnuncioTituloFila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="serif"
+            android:maxLines="2"
+            android:paddingEnd="44dp"
+            android:text="MANTENIMIENTO DE ESPACIOS COMUNES"
+            android:textColor="#482514"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAnuncioAutorFila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="eloy · Vivienda #311A"
+            android:textColor="#724629"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtAnuncioCuerpoFila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:fontFamily="serif"
+            android:maxLines="3"
+            android:text="Este sábado se realizará mantenimiento de las áreas comunes de la comunidad."
+            android:textColor="#392316"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/txtAnuncioFechaFila"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="★ 24/11 · 18:47"
+            android:textColor="#875C31"
+            android:textSize="9sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/bg_ann_official_stamp"
+        android:fontFamily="serif"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:rotation="7"
+        android:text="OFICIAL"
+        android:textColor="#A52D1E"
+        android:textSize="7sp"
+        android:textStyle="bold" />
+</FrameLayout>
