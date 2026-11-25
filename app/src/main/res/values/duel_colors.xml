@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="duel_wood_dark">#32190F</color>
+    <color name="duel_wood_mid">#60331F</color>
+    <color name="duel_parchment">#EFD7AE</color>
+    <color name="duel_parchment_light">#F8EBD4</color>
+    <color name="duel_brass">#D8A344</color>
+    <color name="duel_red_leather">#A72B21</color>
+    <color name="duel_ink">#31190F</color>
+</resources>

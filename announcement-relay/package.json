@@ -1,0 +1,17 @@
+{
+  "name": "comunidad-western-announcement-relay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Relay local para notificaciones FCM de anuncios de Comunidad Western sin desplegar Cloud Functions.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "check": "node --check index.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "firebase-admin": "14.5.1"
+  }
+}

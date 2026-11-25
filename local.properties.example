@@ -1,0 +1,6 @@
+# Copia este archivo como local.properties y completa tus datos locales.
+# No subas local.properties a GitHub.
+# Valores requeridos por app/build.gradle para MQTT:
+MQTT_URI=wss://mqtt.cafeycodigo.org:443
+MQTT_USERNAME=TU_USUARIO_MQTT
+MQTT_PASSWORD=TU_PASSWORD_MQTT

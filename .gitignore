@@ -1,15 +1,24 @@
+# Android Studio / Gradle
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
+.idea/
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
 local.properties
+
+# Firebase app configuration (keep local, do not commit)
+app/google-services.json
+
+# Firebase Admin credentials
+**/*service-account*.json
+**/*firebase-adminsdk*.json
+**/comunidad-western-admin.json
+FirebaseSecrets/
+credentials/
+
+# FCM local relay dependencies and secrets
+announcement-relay/node_modules/
+announcement-relay/.env
+announcement-relay/credentials/

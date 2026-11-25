@@ -1,3 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Comunidad Western</string>
+    <string name="brand_mark">CW</string>
+    <string name="tagline">Unidos como en el viejo oeste</string>
+    <string name="brand_font">serif</string>
 </resources>
