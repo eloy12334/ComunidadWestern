@@ -1,11 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="16dp">
-    <TextView style="@style/ScreenTitle" android:text="Chat general"/>
-    <TextView style="@style/MutedText" android:text="Conversaciones entre vecinos. Nombre y vivienda acompañan cada mensaje." android:layout_marginBottom="12dp"/>
-    <ListView android:id="@+id/listaMensajes" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="@drawable/bg_panel" android:divider="@color/divider" android:dividerHeight="1dp" android:padding="8dp"/>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/bg_panel" android:padding="8dp" android:layout_marginTop="12dp">
-        <EditText android:id="@+id/txtMensaje" android:layout_width="0dp" android:layout_height="52dp" android:layout_weight="1" android:background="@drawable/bg_input" android:hint="Escribe un mensaje" android:padding="12dp" android:inputType="textCapSentences" android:textColor="@color/text_main" android:textColorHint="@color/text_muted"/>
-        <Button android:id="@+id/btnEnviarMensaje" style="@style/PrimaryButton" android:layout_width="wrap_content" android:layout_height="48dp" android:layout_marginTop="0dp" android:layout_marginStart="8dp" android:minWidth="84dp" android:text="Enviar"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_chat_parchment">
+
+    <!-- Paisaje del pueblo como adorno de fondo; la lista sigue siendo funcional. -->
+    <ImageView
+        android:id="@+id/imgChatPaisaje"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="108dp"
+        android:alpha="0.34"
+        android:contentDescription="Paisaje del viejo oeste"
+        android:scaleType="fitXY"
+        android:src="@drawable/western_desert_banner" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="5dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="116dp">
+
+            <ImageView
+                android:id="@+id/imgChatHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Cartel Chat general"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/chat_header" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="62dp"
+                android:layout_gravity="start|center_vertical"
+                android:contentDescription="Farol del oeste"
+                android:scaleType="fitCenter"
+                android:src="@drawable/kerosene_lantern" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="62dp"
+                android:layout_gravity="end|center_vertical"
+                android:contentDescription="Farol del oeste"
+                android:scaleType="fitCenter"
+                android:src="@drawable/kerosene_lantern" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/imgChatDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="-2dp"
+            android:contentDescription="Conversaciones entre vecinos. Nombre y vivienda acompañan cada mensaje."
+            android:scaleType="fitCenter"
+            android:src="@drawable/chat_description_banner" />
+
+        <ListView
+            android:id="@+id/listaMensajes"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="3dp"
+            android:drawSelectorOnTop="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="6dp"
+            android:scrollbars="none"
+            android:transcriptMode="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/bg_chat_input_tray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="7dp"
+            android:paddingEnd="5dp">
+
+            <EditText
+                android:id="@+id/txtMensaje"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_chat_input_western"
+                android:hint="Escribe un mensaje..."
+                android:imeOptions="actionSend"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLength="500"
+                android:maxLines="3"
+                android:minHeight="48dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="10dp"
+                android:textColor="#492615"
+                android:textColorHint="#956B42"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/btnEnviarMensaje"
+                android:layout_width="104dp"
+                android:layout_height="58dp"
+                android:layout_marginStart="5dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Enviar mensaje"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/chat_send_button" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginTop="1dp">
+
+            <ImageButton
+                android:id="@+id/btnVolverChat"
+                android:layout_width="166dp"
+                android:layout_height="54dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:contentDescription="Volver al menú principal"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/chat_back_button_wood" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="34dp"
+                android:layout_gravity="bottom|start"
+                android:contentDescription="Adorno de herradura"
+                android:scaleType="fitCenter"
+                android:src="@drawable/horseshoe" />
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="38dp"
+                android:layout_gravity="bottom|end"
+                android:contentDescription="Adorno de lazo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cowboy_lasso" />
+        </FrameLayout>
     </LinearLayout>
-    <Button android:id="@+id/btnVolverChat" style="@style/TextAction" android:text="Volver"/>
-</LinearLayout>
+</FrameLayout>

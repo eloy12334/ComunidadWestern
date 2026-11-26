@@ -1,18 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="page_bg">#F5E8D5</color>
-    <color name="surface">#FFFAF2</color>
-    <color name="surface_alt">#F0DDC1</color>
-    <color name="primary">#3B2118</color>
-    <color name="accent">#D8872B</color>
-    <color name="secondary">#8C4B2C</color>
-    <color name="text_main">#34231C</color>
-    <color name="text_muted">#806B5A</color>
-    <color name="divider">#E2CBAA</color>
-    <color name="on_primary">#FFF8EF</color>
-    <color name="danger">#B63A2B</color>
+    <color name="page_bg">#F2D4A0</color>
+    <color name="surface">#FFF0D2</color>
+    <color name="primary">#4A2516</color>
+    <color name="accent">#D58A28</color>
+    <color name="secondary">#8D4B28</color>
+    <color name="text_main">#362316</color>
+    <color name="text_muted">#76583D</color>
+    <color name="divider">#C8A77B</color>
+    <color name="on_primary">#FFF4DF</color>
+    <color name="danger">#A83220</color>
     <color name="on_danger">#FFFFFF</color>
-    <color name="input">#FFFCF7</color>
-    <color name="gold">#E7B65E</color>
-    <color name="success">#527C4C</color>
+    <color name="input">#FFF7E8</color>
+
+    <color name="western_parchment">#F3DDB7</color>
+    <color name="western_brown">#4A2415</color>
+    <color name="western_wood">#6B351D</color>
+    <color name="western_leather_red">#8F2B1D</color>
+    <color name="western_brass">#C58A32</color>
 </resources>

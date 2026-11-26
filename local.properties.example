@@ -1,6 +1,6 @@
-# Copia este archivo como local.properties y completa tus datos locales.
-# No subas local.properties a GitHub.
-# Valores requeridos por app/build.gradle para MQTT:
-MQTT_URI=wss://mqtt.cafeycodigo.org:443
+# Copia este archivo como local.properties en la raiz del proyecto.
+# Android Studio suele completar sdk.dir automaticamente al abrirlo.
+# Completa los valores MQTT con las credenciales vigentes entregadas por el profesor.
+MQTT_URI=ssl://TU_BROKER_MQTT:8883
 MQTT_USERNAME=TU_USUARIO_MQTT
-MQTT_PASSWORD=TU_PASSWORD_MQTT
+MQTT_PASSWORD=TU_CLAVE_MQTT

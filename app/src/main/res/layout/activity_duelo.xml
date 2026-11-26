@@ -1,68 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/page_bg" android:fillViewport="true">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="18dp">
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="DUELO DEL OESTE" android:textColor="@color/primary"
-            android:textSize="28sp" android:textStyle="bold" android:gravity="center"/>
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Un duelo de reflejos entre vecinos" android:textColor="@color/text_muted"
-            android:textSize="14sp" android:gravity="center" android:layout_marginBottom="12dp"/>
-        <com.example.comunidadwestern.WesternSceneView
-            android:layout_width="match_parent" android:layout_height="190dp"
-            android:background="@drawable/bg_western_panel"
-            android:contentDescription="Ilustración del desierto del oeste con vaqueros caricaturizados"/>
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:padding="16dp" android:layout_marginTop="14dp"
-            android:background="@drawable/bg_western_panel">
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="MODO DE JUEGO" android:textColor="@color/gold"
-                android:textSize="18sp" android:textStyle="bold" android:gravity="center"/>
-            <RadioGroup android:id="@+id/rgModo" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:orientation="horizontal"
-                android:gravity="center" android:layout_marginTop="8dp">
-                <RadioButton android:id="@+id/rbMejor1" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:checked="true"
-                    android:text="Mejor de 1" android:textColor="@color/on_primary"
-                    android:buttonTint="@color/gold"/>
-                <RadioButton android:id="@+id/rbMejor3" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Mejor de 3"
-                    android:textColor="@color/on_primary" android:buttonTint="@color/gold"/>
-                <RadioButton android:id="@+id/rbMejor5" android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:text="Mejor de 5"
-                    android:textColor="@color/on_primary" android:buttonTint="@color/gold"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/duel_wood_dark"
+    android:fillViewport="true"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="18dp">
+
+        <ImageView
+            android:layout_width="290dp"
+            android:layout_height="102dp"
+            android:src="@drawable/duel_logo_duelo_oeste"
+            android:scaleType="fitCenter"
+            android:contentDescription="Duelo del Oeste" />
+
+        <ImageView
+            android:layout_width="230dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="-2dp"
+            android:src="@drawable/duel_banner_subtitulo"
+            android:scaleType="fitCenter"
+            android:contentDescription="Un duelo de reflejos entre vecinos" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/duel_bg_pueblo_sunset"
+            android:scaleType="centerCrop"
+            android:contentDescription="Pueblo del oeste al atardecer" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="★  MODO DE JUEGO  ★"
+            android:textColor="@color/duel_parchment_light"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/duel_panel_modo_juego"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <RadioGroup
+                android:id="@+id/rgModo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton
+                    android:id="@+id/rbMejor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Mejor de 1"
+                    android:textColor="@color/duel_ink"
+                    android:textSize="12sp"
+                    android:buttonTint="@color/duel_brass"
+                    android:paddingEnd="3dp" />
+
+                <RadioButton
+                    android:id="@+id/rbMejor3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mejor de 3"
+                    android:textColor="@color/duel_ink"
+                    android:textSize="12sp"
+                    android:buttonTint="@color/duel_brass"
+                    android:paddingEnd="3dp" />
+
+                <RadioButton
+                    android:id="@+id/rbMejor5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mejor de 5"
+                    android:textColor="@color/duel_ink"
+                    android:textSize="12sp"
+                    android:buttonTint="@color/duel_brass" />
             </RadioGroup>
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="La cuenta será aleatoria: entre 3 y 5 segundos por ronda."
-                android:textColor="@color/surface_alt" android:textSize="13sp" android:gravity="center"
-                android:layout_marginTop="5dp"/>
-            <Button android:id="@+id/btnCrearSala" android:layout_width="match_parent"
-                android:layout_height="54dp" android:layout_marginTop="14dp"
-                android:background="@drawable/bg_western_gold_button" android:text="CREAR SALA"
-                android:textColor="@color/primary" android:textStyle="bold" android:textAllCaps="false"/>
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="¿Tu rival ya creó una sala?" android:textColor="@color/gold"
-                android:gravity="center" android:layout_marginTop="15dp"/>
-            <EditText android:id="@+id/txtCodigoSala" android:layout_width="match_parent"
-                android:layout_height="52dp" android:layout_marginTop="8dp"
-                android:background="@color/on_primary" android:hint="CÓDIGO DE 6 CARACTERES"
-                android:inputType="textCapCharacters" android:maxLength="6"
-                android:gravity="center" android:textColor="@color/primary"
-                android:textStyle="bold" android:letterSpacing="0.15"/>
-            <Button android:id="@+id/btnUnirseSala" android:layout_width="match_parent"
-                android:layout_height="52dp" android:layout_marginTop="8dp"
-                android:background="@drawable/bg_western_red_button" android:text="UNIRSE AL DUELO"
-                android:textColor="@color/on_primary" android:textStyle="bold" android:textAllCaps="false"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="28dp"
+                android:src="@drawable/duel_reloj_arena"
+                android:scaleType="fitCenter"
+                android:contentDescription="Reloj de arena" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Cuenta aleatoria de 3 a 5 segundos por ronda"
+                android:textColor="@color/duel_parchment_light"
+                android:textSize="12sp"
+                android:gravity="center" />
         </LinearLayout>
-        <Button android:id="@+id/btnComoJugar" android:layout_width="match_parent"
-            android:layout_height="48dp" android:layout_marginTop="10dp"
-            android:backgroundTint="@color/secondary" android:text="CÓMO JUGAR"
-            android:textColor="@color/on_primary" android:textAllCaps="false"/>
-        <Button android:id="@+id/btnVolverDuelo" android:layout_width="match_parent"
-            android:layout_height="46dp" android:layout_marginTop="5dp"
-            android:backgroundTint="@color/primary" android:text="VOLVER"
-            android:textColor="@color/on_primary" android:textAllCaps="false"/>
+
+        <Button
+            android:id="@+id/btnCrearSala"
+            android:layout_width="306dp"
+            android:layout_height="92dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/duel_btn_crear_sala"
+            android:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:padding="0dp"
+            android:text=""
+            android:contentDescription="Crear sala" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:text="¿Tu rival ya creó una sala?"
+            android:textColor="@color/duel_parchment_light"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/duel_campo_codigo_sala"
+            android:scaleType="fitCenter"
+            android:contentDescription="Código de sala de seis caracteres" />
+
+        <EditText
+            android:id="@+id/txtCodigoSala"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_input"
+            android:hint="ABC123"
+            android:inputType="textCapCharacters"
+            android:maxLength="6"
+            android:gravity="center"
+            android:letterSpacing="0.18"
+            android:textColor="@color/duel_ink"
+            android:textColorHint="#9B7A57"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp" />
+
+        <Button
+            android:id="@+id/btnUnirseSala"
+            android:layout_width="306dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/duel_btn_unirse_duelo"
+            android:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:padding="0dp"
+            android:text=""
+            android:contentDescription="Unirse al duelo" />
+
+        <Button
+            android:id="@+id/btnComoJugar"
+            android:layout_width="230dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-1dp"
+            android:background="@drawable/duel_btn_como_jugar"
+            android:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:padding="0dp"
+            android:text=""
+            android:contentDescription="Cómo jugar" />
+
+        <Button
+            android:id="@+id/btnVolverDuelo"
+            android:layout_width="180dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="-7dp"
+            android:background="@drawable/duel_btn_volver"
+            android:backgroundTint="@null"
+            android:stateListAnimator="@null"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:padding="0dp"
+            android:text=""
+            android:contentDescription="Volver al menú principal" />
+
     </LinearLayout>
 </ScrollView>

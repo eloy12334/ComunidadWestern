@@ -1,24 +1,26 @@
-# Android Studio / Gradle
-*.iml
+# Android / Gradle
 .gradle/
 .idea/
 **/build/
-captures/
-.externalNativeBuild/
-.cxx/
+/build/
+*.iml
+.DS_Store
 local.properties
 
-# Firebase app configuration (keep local, do not commit)
+# Firebase client config is needed locally to build; keep it out of Git.
 app/google-services.json
 
-# Firebase Admin credentials
+# Firebase Admin service-account credentials - NEVER commit these.
+app/comunidad-western-admin.json
 **/*service-account*.json
 **/*firebase-adminsdk*.json
-**/comunidad-western-admin.json
+**/credentials/
 FirebaseSecrets/
-credentials/
 
-# FCM local relay dependencies and secrets
+# Local relay dependencies and secrets
 announcement-relay/node_modules/
 announcement-relay/.env
-announcement-relay/credentials/
+announcement-relay/*.service-account.json
+announcement-relay/service-account*.json
+announcement-relay/*-firebase-adminsdk-*.json
+functions/node_modules/

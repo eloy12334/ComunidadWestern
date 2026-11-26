@@ -1,12 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="18dp">
-    <TextView style="@style/ScreenTitle" android:text="Alertas comunitarias"/>
-    <TextView android:id="@+id/txtEstadoMqtt" style="@style/MutedText" android:layout_marginTop="2dp" android:text="Comprobando MQTT..."/>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:background="@drawable/bg_panel" android:padding="14dp" android:orientation="vertical">
-        <TextView style="@style/SectionLabel" android:text="AVISO DE EMERGENCIA"/>
-        <Button android:id="@+id/btnActivarAlerta" android:layout_width="match_parent" android:layout_height="64dp" android:background="@drawable/bg_button_danger" android:text="ACTIVAR ALERTA" android:textColor="@color/on_danger" android:textStyle="bold" android:textSize="17sp" android:textAllCaps="false"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3B2116">
+
+    <ImageView
+        android:id="@+id/imgFondoAlertas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Paisaje y textura del viejo oeste"
+        android:scaleType="fitXY"
+        android:src="@drawable/alerts_screen_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="9dp"
+        android:paddingEnd="9dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp">
+
+        <!-- Cartel principal del sheriff -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="116dp">
+
+            <ImageView
+                android:layout_width="278dp"
+                android:layout_height="112dp"
+                android:layout_gravity="center"
+                android:contentDescription="Cartel de Alertas Comunitarias"
+                android:scaleType="fitXY"
+                android:src="@drawable/alerts_header_sheriff" />
+
+            <TextView
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="17dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.035"
+                android:shadowColor="#2A1008"
+                android:shadowDx="1"
+                android:shadowDy="2"
+                android:shadowRadius="2"
+                android:text="ALERTAS\nCOMUNITARIAS"
+                android:textColor="#F7D58C"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="37dp"
+                android:layout_height="70dp"
+                android:layout_gravity="start|center_vertical"
+                android:contentDescription="Farol del oeste"
+                android:scaleType="fitCenter"
+                android:src="@drawable/alerts_kerosene_lantern" />
+
+            <ImageView
+                android:layout_width="43dp"
+                android:layout_height="72dp"
+                android:layout_gravity="end|center_vertical"
+                android:contentDescription="Lazo de vaquero"
+                android:scaleType="fitCenter"
+                android:src="@drawable/alerts_cowboy_lasso" />
+        </FrameLayout>
+
+        <!-- Estado MQTT: el texto lo actualiza MqttManager. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="-2dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:contentDescription="Cartel de estado MQTT"
+                android:scaleType="fitXY"
+                android:src="@drawable/alerts_mqtt_banner" />
+
+            <TextView
+                android:id="@+id/txtEstadoMqtt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:fontFamily="serif"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="Comprobando MQTT..."
+                android:textColor="#4B2815"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- Aviso de emergencia y botón Android real. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="177dp"
+            android:layout_marginTop="3dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Panel de emergencia en pergamino"
+                android:scaleType="fitXY"
+                android:src="@drawable/alerts_emergency_panel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="7dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="¡AVISO DE EMERGENCIA!"
+                    android:textColor="#7D2116"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="1dp">
+
+                    <ImageView
+                        android:layout_width="62dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="start|center_vertical"
+                        android:contentDescription="Revólver decorativo"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/alerts_crossed_revolvers" />
+
+                    <ImageView
+                        android:layout_width="54dp"
+                        android:layout_height="49dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Sirena de emergencia"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/alerts_red_siren" />
+
+                    <ImageView
+                        android:layout_width="62dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:contentDescription="Revólver decorativo"
+                        android:rotationY="180"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/alerts_crossed_revolvers" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:fontFamily="serif"
+                    android:includeFontPadding="false"
+                    android:text="¡Preparad las pistolas, vaqueros!"
+                    android:textColor="#512817"
+                    android:textSize="13sp"
+                    android:textStyle="bold|italic" />
+
+                <Button
+                    android:id="@+id/btnActivarAlerta"
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/alerts_activate_button"
+                    android:backgroundTint="@null"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:minHeight="0dp"
+                    android:minWidth="0dp"
+                    android:padding="0dp"
+                    android:text="ACTIVAR ALERTA"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF0C7"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Cabecera del historial -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:layout_width="265dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="Cabecera del historial de alertas"
+                android:scaleType="fitXY"
+                android:src="@drawable/alerts_history_header" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:fontFamily="serif"
+                android:includeFontPadding="false"
+                android:text="HISTORIAL DE ALERTAS"
+                android:textColor="#F4D18B"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ListView
+                android:id="@+id/listaAlertas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="2dp"
+                android:drawSelectorOnTop="false"
+                android:footerDividersEnabled="false"
+                android:headerDividersEnabled="false"
+                android:paddingStart="1dp"
+                android:paddingEnd="1dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="2dp"
+                android:scrollbars="none" />
+
+            <TextView
+                android:id="@+id/txtAlertasVacias"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:fontFamily="serif"
+                android:padding="22dp"
+                android:text="El pueblo está tranquilo. Todavía no hay alertas registradas."
+                android:textColor="#704729"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <!-- Botón volver real, con fondo gráfico separado. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="1dp">
+
+            <ImageButton
+                android:id="@+id/btnVolverAlertas"
+                android:layout_width="174dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:contentDescription="Volver al menú principal"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/alerts_back_button" />
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="serif"
+                android:includeFontPadding="false"
+                android:text="VOLVER"
+                android:textColor="#F4D18B"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:clickable="false"
+                android:focusable="false" />
+        </FrameLayout>
     </LinearLayout>
-    <TextView style="@style/SectionLabel" android:layout_marginTop="20dp" android:text="HISTORIAL DE ALERTAS"/>
-    <ListView android:id="@+id/listaAlertas" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="@drawable/bg_panel" android:divider="@color/divider" android:dividerHeight="1dp" android:padding="8dp"/>
-    <Button android:id="@+id/btnVolverAlertas" style="@style/TextAction" android:text="Volver"/>
-</LinearLayout>
+</FrameLayout>

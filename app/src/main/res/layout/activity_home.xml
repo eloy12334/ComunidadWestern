@@ -1,53 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/bg_page_background" android:fillViewport="true">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="20dp">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="horizontal" android:gravity="center_vertical">
-            <ImageView android:layout_width="68dp" android:layout_height="68dp"
-                android:src="@drawable/western_brand" android:scaleType="fitCenter"
-                android:contentDescription="Logo Comunidad Western"/>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="14dp">
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/app_name" android:textColor="@color/primary"
-                    android:textSize="22sp" android:textStyle="bold" android:fontFamily="serif"/>
-                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:text="@string/tagline" android:textColor="@color/text_muted"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-        </LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home_western_scene">
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:orientation="vertical" android:background="@drawable/bg_panel"
-            android:padding="18dp" android:layout_marginTop="20dp" android:elevation="2dp">
-            <TextView android:id="@+id/txtBienvenida" style="@style/ScreenTitle"
-                android:layout_marginTop="0dp" android:text="Hola, vecino"/>
-            <TextView android:id="@+id/txtViviendaHome" style="@style/MutedText"
-                android:layout_marginTop="4dp" android:text="Vivienda #---"/>
-        </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
-        <TextView style="@style/SectionLabel" android:layout_marginTop="24dp"
-            android:text="ESPACIOS DE LA COMUNIDAD"/>
-        <Button android:id="@+id/btnChat" style="@style/MenuButton"
-            android:drawableStart="@drawable/ic_chat" android:text="Chat general"/>
-        <Button android:id="@+id/btnVentas" style="@style/MenuButton"
-            android:drawableStart="@drawable/ic_store" android:text="Ventas comunitarias"/>
-        <Button android:id="@+id/btnAnuncios" style="@style/MenuButton"
-            android:drawableStart="@drawable/ic_announcement" android:text="Anuncios oficiales"/>
-        <Button android:id="@+id/btnAlertas" style="@style/MenuButton"
-            android:drawableStart="@drawable/ic_alert" android:text="Alertas comunitarias"/>
-        <Button android:id="@+id/btnDuelo" style="@style/MenuButton"
-            android:drawableStart="@drawable/ic_duel" android:text="Duelo del Oeste"/>
-        <Button android:id="@+id/btnPerfil" style="@style/SecondaryButton"
-            android:drawableStart="@drawable/ic_person" android:drawablePadding="10dp"
-            android:gravity="center" android:text="Mi perfil"/>
-        <Button android:id="@+id/btnCerrarSesion" style="@style/TextAction"
-            android:layout_marginTop="4dp" android:text="Cerrar sesión"/>
-        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="6dp" android:gravity="center" android:text="UNIDOS COMO EN EL VIEJO OESTE"
-            android:textColor="@color/text_muted" android:textSize="10sp" android:letterSpacing="0.12"/>
-    </LinearLayout>
-</ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="18dp">
+
+            <ImageView
+                android:id="@+id/imgLogoHome"
+                android:layout_width="match_parent"
+                android:layout_height="168dp"
+                android:src="@drawable/menu_logo_western"
+                android:scaleType="fitCenter"
+                android:contentDescription="Comunidad Western, emblema del viejo oeste" />
+
+            <TextView
+                android:id="@+id/txtBienvenida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="Hola, vecino"
+                android:textColor="#4A2415"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:shadowColor="#80FFF0CE"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="3" />
+
+            <TextView
+                android:id="@+id/txtViviendaHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="1dp"
+                android:text="Vivienda #---"
+                android:textColor="#61391F"
+                android:textSize="15sp"
+                android:letterSpacing="0.04"
+                android:shadowColor="#80FFF0CE"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="2" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/menu_section_community"
+                android:scaleType="fitCenter"
+                android:contentDescription="Espacios de la comunidad" />
+
+            <ImageButton
+                android:id="@+id/btnChat"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_chat"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir chat general" />
+
+            <ImageButton
+                android:id="@+id/btnVentas"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_sales"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir ventas comunitarias" />
+
+            <ImageButton
+                android:id="@+id/btnAnuncios"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_announcements"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir anuncios oficiales" />
+
+            <ImageButton
+                android:id="@+id/btnAlertas"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_alerts"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir alertas comunitarias" />
+
+            <ImageButton
+                android:id="@+id/btnDuelo"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_duel"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir Duelo del Oeste" />
+
+            <ImageButton
+                android:id="@+id/btnPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="3dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_profile"
+                android:scaleType="fitCenter"
+                android:contentDescription="Abrir mi perfil" />
+
+            <ImageButton
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginTop="0dp"
+                android:padding="0dp"
+                android:background="@drawable/menu_button_ripple"
+                android:src="@drawable/menu_btn_logout"
+                android:scaleType="fitCenter"
+                android:contentDescription="Cerrar sesión" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

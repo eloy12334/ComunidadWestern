@@ -1,112 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Comunidad" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="android:fontFamily">sans</item>
-        <item name="android:textColorPrimary">@color/text_main</item>
-        <item name="android:textColorSecondary">@color/text_muted</item>
+        <item name="android:fontFamily">@string/brand_font</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@color/page_bg</item>
         <item name="android:navigationBarColor">@color/primary</item>
         <item name="android:windowLightNavigationBar">false</item>
-        <item name="android:windowActionModeOverlay">true</item>
-        <item name="android:windowBackground">@color/page_bg</item>
     </style>
-
     <style name="FormField">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">56dp</item>
-        <item name="android:background">@drawable/bg_input</item>
-        <item name="android:paddingStart">16dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:textColor">@color/text_main</item>
-        <item name="android:textColorHint">@color/text_muted</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:fontFamily">sans</item>
-        <item name="android:includeFontPadding">false</item>
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">54dp</item>
+        <item name="android:background">@drawable/bg_input</item><item name="android:padding">14dp</item>
+        <item name="android:textColor">@color/text_main</item><item name="android:textColorHint">@color/text_muted</item>
     </style>
-
     <style name="PrimaryButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">54dp</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:background">@drawable/bg_button_primary</item>
-        <item name="android:textColor">@color/on_primary</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:fontFamily">sans</item>
-        <item name="android:elevation">2dp</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:stateListAnimator">@null</item>
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">52dp</item>
+        <item name="android:layout_marginTop">10dp</item><item name="android:backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/on_primary</item><item name="android:textAllCaps">false</item><item name="android:textStyle">bold</item>
     </style>
-
     <style name="SecondaryButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">50dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:background">@drawable/bg_button_secondary</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:fontFamily">sans</item>
-        <item name="android:elevation">1dp</item>
-        <item name="android:stateListAnimator">@null</item>
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">8dp</item><item name="android:backgroundTint">@color/accent</item>
+        <item name="android:textColor">@color/text_main</item><item name="android:textAllCaps">false</item>
     </style>
-
     <style name="TextAction">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">46dp</item>
-        <item name="android:background">@drawable/bg_button_text</item>
-        <item name="android:textColor">@color/secondary</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans</item>
+        <item name="android:layout_width">match_parent</item><item name="android:layout_height">48dp</item>
+        <item name="android:backgroundTint">@android:color/transparent</item><item name="android:textColor">@color/primary</item><item name="android:textAllCaps">false</item>
     </style>
-
-    <style name="MenuButton" parent="PrimaryButton">
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_height">62dp</item>
-        <item name="android:background">@drawable/bg_menu_button</item>
-        <item name="android:textColor">@color/text_main</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:gravity">center_vertical|start</item>
-        <item name="android:paddingStart">18dp</item>
-        <item name="android:paddingEnd">16dp</item>
-        <item name="android:drawablePadding">14dp</item>
-        <item name="android:elevation">1dp</item>
-    </style>
-
-    <style name="ScreenTitle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/primary</item>
-        <item name="android:textSize">25sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">serif</item>
-        <item name="android:paddingBottom">6dp</item>
-    </style>
-
-    <style name="MutedText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/text_muted</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans</item>
-    </style>
-
-    <style name="SectionLabel">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/secondary</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans</item>
-        <item name="android:letterSpacing">0.08</item>
-        <item name="android:paddingBottom">8dp</item>
-    </style>
+    <style name="MenuButton" parent="PrimaryButton"><item name="android:layout_marginTop">12dp</item><item name="android:layout_height">58dp</item></style>
+    <style name="ScreenTitle"><item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item><item name="android:textColor">@color/primary</item><item name="android:textSize">25sp</item><item name="android:textStyle">bold</item><item name="android:paddingBottom">6dp</item></style>
+    <style name="MutedText"><item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item><item name="android:textColor">@color/text_muted</item><item name="android:textSize">14sp</item></style>
+    <style name="SectionLabel"><item name="android:layout_width">match_parent</item><item name="android:layout_height">wrap_content</item><item name="android:textColor">@color/secondary</item><item name="android:textSize">12sp</item><item name="android:textStyle">bold</item><item name="android:paddingBottom">6dp</item></style>
 </resources>

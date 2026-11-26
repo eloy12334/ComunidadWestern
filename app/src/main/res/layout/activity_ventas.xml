@@ -1,15 +1,392 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="18dp">
-    <TextView style="@style/ScreenTitle" android:text="Ventas comunitarias"/>
-    <TextView style="@style/MutedText" android:text="Ofrece productos y encuentra oportunidades en tu comunidad." android:layout_marginBottom="12dp"/>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_panel" android:padding="14dp" android:elevation="2dp">
-        <TextView style="@style/SectionLabel" android:text="NUEVA PUBLICACIÓN"/>
-        <EditText android:id="@+id/txtProducto" style="@style/FormField" android:hint="Nombre del producto"/>
-        <EditText android:id="@+id/txtDescripcionProducto" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Descripción" android:inputType="textMultiLine" android:minLines="2" android:gravity="top|start"/>
-        <EditText android:id="@+id/txtPrecioProducto" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Precio (CLP)" android:inputType="numberDecimal"/>
-        <Button android:id="@+id/btnPublicarProducto" style="@style/PrimaryButton" android:text="Publicar producto"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_chat_parchment"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="156dp"
+        android:layout_gravity="bottom"
+        android:alpha="0.42"
+        android:contentDescription="Paisaje del viejo oeste"
+        android:scaleType="fitXY"
+        android:src="@drawable/western_desert_banner" />
+
+    <ImageView
+        android:layout_width="54dp"
+        android:layout_height="69dp"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="48dp"
+        android:alpha="0.88"
+        android:contentDescription="Barril decorativo"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sales_barrel" />
+
+    <ImageView
+        android:layout_width="58dp"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="48dp"
+        android:alpha="0.9"
+        android:contentDescription="Bolsa de monedas decorativa"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sales_money_sack" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="3dp">
+
+        <!-- Cartel principal con texto dinámico superpuesto. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="94dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Cartel de ventas comunitarias"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_title_sign" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="11dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:shadowColor="#B75B1D"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="2"
+                android:text="Ventas comunitarias"
+                android:textColor="#FFE0A0"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical|start"
+                android:contentDescription="Farol western"
+                android:src="@drawable/sales_lantern" />
+
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical|end"
+                android:contentDescription="Farol western"
+                android:src="@drawable/sales_lantern" />
+        </FrameLayout>
+
+        <!-- Descripción en pergamino colgante. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="-1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Pergamino introductorio"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_hanging_banner" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="52dp"
+                android:layout_marginEnd="52dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Ofrece productos y encuentra oportunidades en tu comunidad."
+                android:textColor="#4A2415"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- Sección nueva publicación. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_section_plaque" />
+
+            <ImageView
+                android:layout_width="27dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="15dp"
+                android:contentDescription="Carrito de compras"
+                android:src="@drawable/sales_cart_icon" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Nueva publicación"
+                android:textColor="#FFF0D0"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- Panel del formulario; los EditText siguen siendo controles reales. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="158dp"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Panel de publicación"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_form_panel" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="17dp"
+                android:paddingEnd="17dp"
+                android:paddingTop="9dp"
+                android:paddingBottom="8dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/sales_input_field" />
+                    <EditText
+                        android:id="@+id/txtProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Nombre del producto"
+                        android:inputType="textCapSentences"
+                        android:maxLength="60"
+                        android:paddingStart="34dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="#4A2415"
+                        android:textColorHint="#805B3B"
+                        android:textSize="13sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="14dp"
+                        android:text="◆"
+                        android:textColor="#8F5425"
+                        android:textSize="12sp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="3dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/sales_input_field" />
+                    <EditText
+                        android:id="@+id/txtDescripcionProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:gravity="top|start"
+                        android:hint="Descripción del producto"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLength="300"
+                        android:maxLines="2"
+                        android:paddingStart="34dp"
+                        android:paddingTop="9dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="#4A2415"
+                        android:textColorHint="#805B3B"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="11dp"
+                        android:text="▤"
+                        android:textColor="#8F5425"
+                        android:textSize="13sp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="3dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/sales_input_field" />
+                    <EditText
+                        android:id="@+id/txtPrecioProducto"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Precio (CLP)"
+                        android:inputType="numberDecimal"
+                        android:maxLength="12"
+                        android:paddingStart="34dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="#4A2415"
+                        android:textColorHint="#805B3B"
+                        android:textSize="13sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="14dp"
+                        android:text="$"
+                        android:textColor="#8F5425"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/btnPublicarProducto"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginTop="-1dp"
+            android:clickable="true"
+            android:contentDescription="Publicar producto"
+            android:focusable="true"
+            android:foreground="@drawable/menu_button_ripple">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_publish_button" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:paddingStart="42dp"
+                android:paddingEnd="12dp"
+                android:text="Publicar producto"
+                android:textColor="#FFF0D0"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- Publicaciones recientes. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_section_plaque" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/sales_money_sack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Publicaciones recientes"
+                android:textColor="#FFF0D0"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="19dp"
+            android:gravity="center"
+            android:text="Toca tu producto para marcarlo como vendido"
+            android:textColor="#654127"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listaVentas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="2dp"
+            android:drawSelectorOnTop="false"
+            android:footerDividersEnabled="false"
+            android:headerDividersEnabled="false"
+            android:paddingStart="1dp"
+            android:paddingEnd="1dp"
+            android:paddingTop="1dp"
+            android:paddingBottom="2dp"
+            android:scrollbars="none" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginTop="1dp">
+
+            <ImageButton
+                android:id="@+id/btnVolverVentas"
+                android:layout_width="154dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:contentDescription="Volver al menú principal"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/sales_back_button" />
+
+            <TextView
+                android:layout_width="98dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:paddingStart="18dp"
+                android:text="Volver"
+                android:textColor="#FFF0D0"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </FrameLayout>
     </LinearLayout>
-    <TextView style="@style/SectionLabel" android:layout_marginTop="18dp" android:text="PUBLICACIONES RECIENTES · TOCA TU PRODUCTO PARA MARCARLO VENDIDO"/>
-    <ListView android:id="@+id/listaVentas" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:background="@drawable/bg_panel" android:divider="@color/divider" android:dividerHeight="1dp" android:padding="8dp"/>
-    <Button android:id="@+id/btnVolverVentas" style="@style/TextAction" android:text="Volver"/>
-</LinearLayout>
+</FrameLayout>

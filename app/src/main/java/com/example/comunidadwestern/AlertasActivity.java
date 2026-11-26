@@ -3,6 +3,9 @@ package com.example.comunidadwestern;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,16 +20,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AlertasActivity extends AppCompatActivity {
 
-    private final ArrayList<String> filas = new ArrayList<>();
     private final ArrayList<DataSnapshot> alertas = new ArrayList<>();
 
-    private ArrayAdapter<String> adapter;
+    private ArrayAdapter<DataSnapshot> adapter;
 
     private DatabaseReference ref;
     private ValueEventListener listener;
@@ -45,13 +51,73 @@ public class AlertasActivity extends AppCompatActivity {
         ListView list = findViewById(R.id.listaAlertas);
         txtEstadoMqtt = findViewById(R.id.txtEstadoMqtt);
 
-        adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                filas
-        );
+        adapter = new ArrayAdapter<DataSnapshot>(this, 0, alertas) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+                View row = convertView;
+                if (row == null) {
+                    row = LayoutInflater.from(AlertasActivity.this)
+                            .inflate(R.layout.item_alerta, parent, false);
+                }
+
+                DataSnapshot item = getItem(position);
+                if (item == null) {
+                    return row;
+                }
+
+                String nombre = item.child("name").getValue(String.class);
+                String vivienda = item.child("housing").getValue(String.class);
+                String estado = item.child("status").getValue(String.class);
+                String id = item.getKey();
+                Long fecha = item.child("createdAt").getValue(Long.class);
+
+                if (nombre == null || nombre.trim().isEmpty()) nombre = "Usuario";
+                if (vivienda == null || vivienda.trim().isEmpty()) vivienda = "?";
+                if (estado == null || estado.trim().isEmpty()) estado = "DESCONOCIDO";
+                if (id == null) id = "sin-id";
+
+                TextView identidad = row.findViewById(R.id.txtAlertaIdentidad);
+                TextView estadoView = row.findViewById(R.id.txtAlertaEstado);
+                TextView idView = row.findViewById(R.id.txtAlertaId);
+                TextView fechaView = row.findViewById(R.id.txtAlertaFecha);
+
+                identidad.setText(nombre + " · #" + vivienda);
+                estadoView.setText(estado.toUpperCase(Locale.ROOT));
+                idView.setText("ID: " + id);
+
+                if (fecha != null && fecha > 0) {
+                    SimpleDateFormat formato = new SimpleDateFormat(
+                            "dd/MM/yyyy · HH:mm",
+                            Locale.getDefault()
+                    );
+                    fechaView.setText("◷ " + formato.format(new Date(fecha)));
+                } else {
+                    fechaView.setText("Fecha no disponible");
+                }
+
+                int colorEstado;
+                switch (estado.toUpperCase(Locale.ROOT)) {
+                    case "ENVIADA":
+                        colorEstado = 0xFF315B35;
+                        break;
+                    case "ATENDIDA":
+                        colorEstado = 0xFF315C78;
+                        break;
+                    case "CERRADA":
+                        colorEstado = 0xFF604B3D;
+                        break;
+                    case "PENDIENTE":
+                    default:
+                        colorEstado = 0xFF8A3B18;
+                        break;
+                }
+                estadoView.setTextColor(colorEstado);
+                return row;
+            }
+        };
 
         list.setAdapter(adapter);
+        list.setEmptyView(findViewById(R.id.txtAlertasVacias));
 
         findViewById(R.id.btnVolverAlertas)
                 .setOnClickListener(v -> finish());
@@ -70,33 +136,15 @@ public class AlertasActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
 
-                filas.clear();
                 alertas.clear();
 
                 for (DataSnapshot d : snapshot.getChildren()) {
-
                     alertas.add(d);
-
-                    String nombre = d.child("name")
-                            .getValue(String.class);
-
-                    String vivienda = d.child("housing")
-                            .getValue(String.class);
-
-                    String estado = d.child("status")
-                            .getValue(String.class);
-
-                    if (nombre == null) nombre = "Usuario";
-                    if (vivienda == null) vivienda = "?";
-                    if (estado == null) estado = "DESCONOCIDO";
-
-                    filas.add(
-                            nombre + " · #" + vivienda
-                                    + "\nEstado: " + estado
-                                    + " · ID: " + d.getKey()
-                    );
                 }
 
+                // Firebase devuelve el rango ordenado de antiguo a nuevo;
+                // mostramos primero la alerta más reciente.
+                Collections.reverse(alertas);
                 adapter.notifyDataSetChanged();
             }
 

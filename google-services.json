@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1084517794601",
+    "firebase_url": "https://comunidad-western-default-rtdb.firebaseio.com",
+    "project_id": "comunidad-western",
+    "storage_bucket": "comunidad-western.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084517794601:android:a44bf06946ac0d1b3a2d38",
+        "android_client_info": {
+          "package_name": "com.example.comunidadwestern"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4egZnWoPoNUArdPXtkuJ5GCELM703qCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

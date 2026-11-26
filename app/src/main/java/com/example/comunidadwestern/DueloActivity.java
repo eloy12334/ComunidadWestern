@@ -314,17 +314,11 @@ public class DueloActivity extends AppCompatActivity {
     }
 
     private void mostrarReglas() {
+        android.view.View contenido = getLayoutInflater()
+                .inflate(R.layout.dialog_duelo_reglas, null, false);
         new AlertDialog.Builder(this)
-                .setTitle("Cómo jugar")
-                .setMessage(
-                        "1. Crea una sala y comparte el código con otro vecino.\n\n" +
-                        "2. El anfitrión inicia la ronda. La cuenta será aleatoria, entre 3 y 5 segundos.\n\n" +
-                        "3. Puedes disparar durante la cuenta: si el servidor recibe el disparo antes de llegar a 0, es falsa salida y pierdes la ronda.\n\n" +
-                        "4. En mejor de 1, perder la ronda significa perder el duelo completo. En mejor de 3 o 5, pierdes solamente esa ronda.\n\n" +
-                        "5. Gana quien llegue primero a la cantidad de rondas necesaria.\n\n" +
-                        "La primera jugada aceptada por Firebase resuelve la ronda."
-                )
-                .setPositiveButton("Entendido", null)
+                .setView(contenido)
+                .setPositiveButton("ENTENDIDO", null)
                 .show();
     }
 

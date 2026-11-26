@@ -1,13 +1,290 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@drawable/bg_page_background" android:padding="18dp">
-    <TextView style="@style/ScreenTitle" android:text="Anuncios oficiales"/>
-    <TextView style="@style/MutedText" android:text="Información importante para todos los residentes." android:layout_marginBottom="12dp"/>
-    <LinearLayout android:id="@+id/panelAdminAnuncio" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_panel" android:padding="14dp" android:elevation="2dp" android:visibility="gone">
-        <TextView style="@style/SectionLabel" android:text="PUBLICAR COMO ADMINISTRADOR"/>
-        <EditText android:id="@+id/txtTituloAnuncio" style="@style/FormField" android:hint="Título del anuncio"/>
-        <EditText android:id="@+id/txtCuerpoAnuncio" style="@style/FormField" android:layout_marginTop="10dp" android:hint="Contenido" android:minLines="3" android:gravity="top|start" android:inputType="textMultiLine"/>
-        <Button android:id="@+id/btnPublicarAnuncio" style="@style/PrimaryButton" android:text="Publicar anuncio"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ann_wood_background"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp">
+
+        <!-- Cartel principal. La imagen contiene el título oficial y el cráneo. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="105dp">
+
+            <ImageView
+                android:layout_width="242dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="Cartel de anuncios oficiales"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ann_title_sign" />
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="1dp"
+                android:contentDescription="Farol decorativo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ann_lantern" />
+
+            <ImageView
+                android:layout_width="34dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginEnd="1dp"
+                android:contentDescription="Farol decorativo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ann_lantern" />
+        </FrameLayout>
+
+        <!-- Mensaje introductorio en pergamino. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:layout_marginTop="-1dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Pergamino informativo"
+                android:scaleType="fitXY"
+                android:src="@drawable/ann_description_banner" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="Información importante para todos los residentes."
+                android:textColor="#4A2415"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!-- Solo se muestra cuando Firebase confirma que la cuenta es administradora. -->
+        <LinearLayout
+            android:id="@+id/panelAdminAnuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/bg_ann_admin_panel"
+            android:orientation="vertical"
+            android:padding="6dp"
+            android:visibility="gone">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ann_section_header" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="serif"
+                    android:gravity="center"
+                    android:text="PUBLICAR COMO ADMINISTRADOR"
+                    android:textColor="#F8DDA8"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ann_title_field" />
+
+                <EditText
+                    android:id="@+id/txtTituloAnuncio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="serif"
+                    android:hint="Título del anuncio"
+                    android:inputType="textCapSentences"
+                    android:maxLength="100"
+                    android:paddingStart="110dp"
+                    android:paddingEnd="12dp"
+                    android:singleLine="true"
+                    android:textColor="#3F2114"
+                    android:textColorHint="#805633"
+                    android:textSize="13sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:layout_marginTop="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ann_body_field" />
+
+                <EditText
+                    android:id="@+id/txtCuerpoAnuncio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="serif"
+                    android:gravity="top|start"
+                    android:hint="Contenido del anuncio"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="1000"
+                    android:maxLines="3"
+                    android:paddingStart="76dp"
+                    android:paddingTop="9dp"
+                    android:paddingEnd="12dp"
+                    android:textColor="#3F2114"
+                    android:textColorHint="#805633"
+                    android:textSize="12sp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginTop="3dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ann_publish_button" />
+
+                <Button
+                    android:id="@+id/btnPublicarAnuncio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="serif"
+                    android:stateListAnimator="@null"
+                    android:text="PUBLICAR ANUNCIO"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF0D4"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:paddingStart="72dp"
+                    android:paddingEnd="8dp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- Separador del tablón. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ann_section_header" />
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="13dp"
+                android:contentDescription="Estrella del sheriff"
+                android:src="@drawable/ann_sheriff_star" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:text="PUBLICACIONES RECIENTES"
+                android:textColor="#F8DDA8"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="2dp">
+
+            <ListView
+                android:id="@+id/listaAnuncios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:clipToPadding="false"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="4dp"
+                android:listSelector="@android:color/transparent"
+                android:paddingBottom="5dp"
+                android:scrollbarStyle="outsideOverlay" />
+
+            <TextView
+                android:id="@+id/emptyAnuncios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="serif"
+                android:gravity="center"
+                android:padding="28dp"
+                android:text="Todavía no hay anuncios en la comunidad.\nCuando el administrador publique uno, aparecerá aquí."
+                android:textColor="#F6D9A7"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="1dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:contentDescription="Cartel de volver"
+                android:scaleType="fitXY"
+                android:src="@drawable/ann_back_button" />
+
+            <Button
+                android:id="@+id/btnVolverAnuncios"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:fontFamily="serif"
+                android:stateListAnimator="@null"
+                android:text="VOLVER"
+                android:textAllCaps="false"
+                android:textColor="#FFF0D4"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingStart="48dp"
+                android:paddingEnd="4dp" />
+        </FrameLayout>
     </LinearLayout>
-    <ListView android:id="@+id/listaAnuncios" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:divider="@color/divider" android:dividerHeight="1dp" android:paddingTop="10dp" android:clipToPadding="false"/>
-    <Button android:id="@+id/btnVolverAnuncios" style="@style/TextAction" android:text="Volver"/>
-</LinearLayout>
+</FrameLayout>
